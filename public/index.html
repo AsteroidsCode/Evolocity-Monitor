@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Evolocity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Material design components -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Base JS & CSS -->
+    <link rel="stylesheet" href="styles/index.css">
+
+    <!-- Android & Chrome OS support for PWA -->
+    <meta name="theme-color" content="#4caf50"/>
+    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
+
+    <!-- IOS Support for PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Evolocity">
+    <link rel="apple-touch-icon" href="/images/icons/IOS/icon-152x152.png">
+
+  </head>
+  <body>
+    <!-- App Drawer -->
+    <aside class="mdc-drawer mdc-drawer--modal">
+      <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">Evolocity Companion</h3>
+        <h6 class="mdc-drawer__subtitle">By Jonathan Voss</h6>
+      </div>
+      <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+          <a class="mdc-list-item mdc-list-item--activated" href="index.html" aria-current="page">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+            <span class="mdc-list-item__text">Home</span>
+          </a>
+          <a class="mdc-list-item" href="diagnostics.html">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">data_usage</i>
+            <span class="mdc-list-item__text">Diagnostics</span>
+          </a>
+          <a class="mdc-list-item" href="settings.html">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings</i>
+            <span class="mdc-list-item__text">Settings</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+    <div class="mdc-drawer-scrim"></div>
+
+    <!-- Top App Bar -->
+    <div class="mdc-drawer-app-content">
+      <header class="mdc-top-app-bar" id="app-bar">
+        <div class="mdc-top-app-bar__row">
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+            <span class="mdc-top-app-bar__title">Home</span>
+          </section>
+        </div>
+      </header>
+
+      <!-- App Contents -->
+      <main class="main-content" id="main-content">
+        <div class="mdc-top-app-bar--fixed-adjust">
+          <!-- Cards for Infomation -->
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell">
+                <div class="mdc-card demo-card">
+                  <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+                    <div class="my-card-content">
+                      <div class="demo-card__primary">
+                        <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Our Changing Planet</h2>
+                        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">by Kurt Wagner</h3>
+                      </div>
+                      <div class="demo-card__secondary mdc-typography mdc-typography--body2" id="cardText">Visit ten places on our planet that are undergoing the biggest changes today.</div>
+                    </div>
+                  </div>
+                  <div class="mdc-card__actions">
+                    <div class="mdc-card__action-icons">
+                      <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">
+                        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+                        <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+                      </button>
+                      <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true">share</button>
+                      <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell">
+                <div class="mdc-card demo-card">
+                  <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+                    <div class="mdc-card__media mdc-card__media--16-9 demo-card__media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>
+                    <div class="my-card-content">
+                      <div class="demo-card__primary">
+                        <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Our Changing Planet</h2>
+                        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">by Kurt Wagner</h3>
+                      </div>
+                      <div class="demo-card__secondary mdc-typography mdc-typography--body2" id="cardText">Visit ten places on our planet that are undergoing the biggest changes today.</div>
+                    </div>
+                  </div>
+                  <div class="mdc-card__actions">
+                    <div class="mdc-card__action-icons">
+                      <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">
+                        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+                        <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+                      </button>
+                      <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true">share</button>
+                      <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell">
+                <div class="mdc-card demo-card">
+                  <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+                    <div class="mdc-card__media mdc-card__media--16-9 demo-card__media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>
+                    <div class="my-card-content">
+                      <div class="demo-card__primary">
+                        <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Our Changing Planet</h2>
+                        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">by Kurt Wagner</h3>
+                      </div>
+                      <div class="demo-card__secondary mdc-typography mdc-typography--body2" id="cardText">Visit ten places on our planet that are undergoing the biggest changes today.</div>
+                    </div>
+                  </div>
+                  <div class="mdc-card__actions">
+                    <div class="mdc-card__action-icons">
+                      <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">
+                        <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+                        <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+                      </button>
+                      <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true">share</button>
+                      <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="connect" type="button">Connect</button>
+
+<button id="disconnect" type="button">Disconnect</button>
+
+<div id="terminal"></div>
+
+<form id="send-form">
+    <input id="input" type="text">
+    <button type="submit">Send</button>
+</form>
+          <div class="mdc-snackbar">
+            <div class="mdc-snackbar__surface">
+              <div class="mdc-snackbar__label"
+                role="status"
+                aria-live="polite">
+                Can't send photo. Retry in 5 seconds.
+              </div>
+              <div class="mdc-snackbar__actions">
+                <button type="button" class="mdc-button mdc-snackbar__action">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Javascript for Material Components -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    
+    <script src="scripts/index.js"></script>
+  </body>
+</html>

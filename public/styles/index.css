@@ -1,0 +1,50 @@
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  background-color: #4caf50;
+}
+
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
+}
+
+.main-content {
+  overflow: auto;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.app-bar {
+  position: absolute;
+}
+
+:root {
+  --mdc-theme-primary: #4caf50;
+  --mdc-theme-secondary: #26a69a;
+  --mdc-theme-text-primary-on-background: #4caf50;
+}
+
+.mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
+  color: #4caf50;
+}
+
+.mdc-drawer .mdc-list-item--activated {
+  color: #4caf50;
+}
+
+.my-card-content {
+  padding: 0px 16px;
+}
+
+.mdc-typography--subtitle2 {
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+
+.mdc-typography--headline6 {
+  margin-top: 16px;
+  margin-bottom: 0px;
+}
