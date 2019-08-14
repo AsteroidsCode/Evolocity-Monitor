@@ -57,6 +57,10 @@
             <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
             <span class="mdc-top-app-bar__title">Home</span>
           </section>
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" id="connect" aria-label="Connect">bluetooth_connected</button>
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" id="disconnect" aria-label="Disconnect">bluetooth_disabled</button>
+          </section>
         </div>
       </header>
 
@@ -139,16 +143,14 @@
               </div>
             </div>
           </div>
-          <button id="connect" type="button">Connect</button>
 
-<button id="disconnect" type="button">Disconnect</button>
+          <div id="terminal"></div>
 
-<div id="terminal"></div>
+          <form id="send-form">
+            <input id="input" type="text">
+            <button type="submit">Send</button>
+          </form>
 
-<form id="send-form">
-    <input id="input" type="text">
-    <button type="submit">Send</button>
-</form>
           <div class="mdc-snackbar">
             <div class="mdc-snackbar__surface">
               <div class="mdc-snackbar__label"
@@ -167,7 +169,7 @@
 
     <!-- Javascript for Material Components -->
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    
+
     <script src="scripts/index.js"></script>
   </body>
 </html>
