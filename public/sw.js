@@ -1,6 +1,16 @@
 // Update cache names any time any of the cached files change.
 const FILES_TO_CACHE = [
-  '/offline.html',
+  './offline.html',
+  './index.html',
+  './diagnostics.html',
+  './settings.html',
+  './scripts/main.js',
+  './scripts/index.js',
+  './scripts/diagnostics.js',
+  './scripts/settings.js',
+  './styles/index.css',
+  './styles/diagnostics.css',
+  './styles/settings.css',
 ];
 
 // CODELAB: Precache static resources here.
@@ -24,7 +34,7 @@ self.addEventListener('fetch', (event) => {
             .catch(() => {
               return caches.open('v1')
                   .then((cache) => {
-                    return cache.match('offline.html');
+                    return cache.match('index.html');
                   });
               })
         );
