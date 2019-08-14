@@ -48,3 +48,7 @@ body {
   margin-top: 16px;
   margin-bottom: 0px;
 }
+
+#terminal {
+  overflow: auto;
+}
