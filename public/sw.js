@@ -11,6 +11,7 @@ const FILES_TO_CACHE = [
   './styles/index.css',
   './styles/diagnostics.css',
   './styles/settings.css',
+  './styles/materialTheme.css',
 ];
 
 // CODELAB: Precache static resources here.
