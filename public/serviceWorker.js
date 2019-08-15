@@ -8,6 +8,7 @@ const FILES_TO_CACHE = [
   './scripts/index.js',
   './scripts/diagnostics.js',
   './scripts/settings.js',
+  './scripts/materialScript.js',
   './styles/index.css',
   './styles/diagnostics.css',
   './styles/settings.css',
