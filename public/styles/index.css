@@ -51,4 +51,15 @@ body {
 
 #terminal {
   overflow: auto;
+  margin-top: 0;
+  padding: 16px;
+  padding-bottom: 0px;
+}
+
+.mdc-card__media--16-9::before {
+  margin-top: 0;
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) {
+  color: #4caf50;
 }

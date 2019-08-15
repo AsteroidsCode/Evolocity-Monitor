@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Material design components -->
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="styles/materialTheme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Base JS & CSS -->
@@ -114,20 +114,22 @@
                     </div>
                     <div class="my-card-content">
                       <div class="demo-card__primary">
-
                         <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Raw Serial</h2>
                         <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">Input From Cart monitor</h3>
                       </div>
-
                     </div>
                   </div>
                   <div class="mdc-card__actions">
                     <form id="send-form">
-                      <div class="mdc-text-field">
-                        <input type="text" id="input" class="mdc-text-field__input">
-                        <label class="mdc-floating-label" for="my-text-field">Hint text</label>
-                        <div class="mdc-line-ripple"></div>
-                        <button type="submit" class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="More options" data-mdc-ripple-is-unbounded="true">send</button>
+                      <div class="mdc-text-field mdc-text-field--outlined">
+                        <input class="mdc-text-field__input" id="text-field-hero-input">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="text-field-hero-input" class="mdc-floating-label">Command</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
                       </div>
                     </form>
                     <div class="mdc-card__action-icons">
@@ -138,14 +140,7 @@
               </div>
             </div>
           </div>
-
-
-
-          <form id="send-form">
-            <input id="input" type="text">
-            <button type="submit">Send</button>
-          </form>
-
+          <!-- Snackbar For Alerts -->
           <div class="mdc-snackbar">
             <div class="mdc-snackbar__surface">
               <div class="mdc-snackbar__label"
