@@ -181,6 +181,9 @@ function disconnect() {
   }
 
   deviceCache = null;
+
+  cartTemp.innerHTML = "0";
+  cartSpeed.innerHTML = "0";
 }
 
 // Отправить данные подключенному устройству
