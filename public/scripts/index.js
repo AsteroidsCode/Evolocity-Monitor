@@ -14,6 +14,8 @@ let disconnectButton = document.getElementById('disconnect');
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
 let inputField = document.getElementById('text-field-hero-input');
+let cartTemp = document.getElementById("temp");
+let cartSpeed = document.getElementById("speed");
 
 var splitData;
 
@@ -145,8 +147,8 @@ function handleCharacteristicValueChanged(event) {
 function receive(data) {
   log(data, 'in');
   splitData = data.split("-", 2);
-  alert(splitData[0]);
-  alert(splitData[1]);
+  cartTemp.innerHTML = splitData[0];
+  cartSpeed.innerHTML = splitData[1];
 }
 
 // Вывод в терминал
