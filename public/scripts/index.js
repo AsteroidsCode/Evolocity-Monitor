@@ -15,6 +15,8 @@ let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
 let inputField = document.getElementById('text-field-hero-input');
 
+var splitData;
+
 // Подключение к устройству при нажатии на кнопку Connect
 connectButton.addEventListener('click', function() {
   connect();
@@ -142,6 +144,9 @@ function handleCharacteristicValueChanged(event) {
 // Обработка полученных данных
 function receive(data) {
   log(data, 'in');
+  splitData = data.split("-", 2);
+  alert(splitData[0]);
+  alert(splitData[1]);
 }
 
 // Вывод в терминал
