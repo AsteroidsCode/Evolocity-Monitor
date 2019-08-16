@@ -5442,7 +5442,7 @@ a.mdc-list-item {
 .mdc-text-field--outlined .mdc-floating-label {
     left: 4px;
     right: initial;
-    top: 17px}
+    top: 14px}
 [dir=rtl] .mdc-text-field--outlined .mdc-floating-label,.mdc-text-field--outlined .mdc-floating-label[dir=rtl] {
     left: initial;
     right: 4px}

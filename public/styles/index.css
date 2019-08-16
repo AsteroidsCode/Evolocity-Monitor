@@ -54,6 +54,19 @@ body {
   margin-top: 0;
   padding: 16px;
   padding-bottom: 0px;
+  height: 200px;
+}
+
+#send-form .mdc-text-field .mdc-text-field--outlined {
+  height: 48px;
+}
+
+.mdc-text-field {
+  height: 48px;
+}
+
+.mdc-text-field--outlined {
+  height: 48px;
 }
 
 .mdc-card__media--16-9::before {
@@ -62,4 +75,8 @@ body {
 
 .mdc-text-field--focused:not(.mdc-text-field--disabled) {
   color: #4caf50;
+}
+
+.mdc-card__actions {
+  height: 64px;
 }
