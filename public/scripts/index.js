@@ -3,7 +3,6 @@ const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer
 const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 const menu = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu'));
-menu.open = true;
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
@@ -18,8 +17,13 @@ let sendForm = document.getElementById('send-form');
 let inputField = document.getElementById('text-field-hero-input');
 let cartTemp = document.getElementById("temp");
 let cartSpeed = document.getElementById("speed");
+let speedMenuButton = document.getElementById("speedMenu");
 
 var splitData;
+
+speedMenuButton.addEventListener('click', function() {
+  menu.open = true;
+});
 
 // Подключение к устройству при нажатии на кнопку Connect
 connectButton.addEventListener('click', function() {
