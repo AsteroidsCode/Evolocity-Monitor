@@ -2,6 +2,8 @@ const snackbar = new mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.
 const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
+const menu = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu'));
+menu.open = true;
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
