@@ -32,6 +32,7 @@ let fullscreenButton = document.getElementById("fullscreen");
 let fullscreenButton1 = document.getElementById("fullscreenExit");
 
 var fullscreenView = document.getElementById("fullscreen-content");
+var mainView = document.getElementById("main-div");
 
 var splitData;
 
@@ -62,14 +63,10 @@ fullscreenButton1.addEventListener('click', function() {
 function fullscreenViewMode() {
   if (fullscreenView.style.display === "none") {
     fullscreenView.style.display = "block";
+    mainView.style.display = "none";
   } else {
     fullscreenView.style.display = "none";
-  }
-
-  if (fullscreenView.style.display === "none") {
-    fullscreenView.style.display = "block";
-  } else {
-    fullscreenView.style.display = "none";
+    mainView.style.display = "block";
   }
 }
 

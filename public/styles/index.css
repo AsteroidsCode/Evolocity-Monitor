@@ -14,6 +14,8 @@ body {
   flex: auto;
   overflow: auto;
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .main-content {
@@ -59,7 +61,7 @@ body {
   margin-top: 0;
   padding: 16px;
   padding-bottom: 0px;
-  height: 200px;
+  max-height: 200px;
 }
 
 #send-form .mdc-text-field .mdc-text-field--outlined {
@@ -105,4 +107,32 @@ body {
 #main-div {
   width: 100vw;
   height: 100vh;
+}
+
+#fullscreen-content {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000000;
+}
+
+#fullscreen-app-bar {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#fullCard {
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen-outter {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+}
+
+.fullscreen-inner {
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
