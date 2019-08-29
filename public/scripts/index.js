@@ -1,8 +1,13 @@
 const snackbar = new mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
+const buttonRipple = new mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
 const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 const menu = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu'));
+const menu1 = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu1'));
+const menu2 = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu2'));
+const menu3 = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu3'));
+const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
@@ -18,6 +23,15 @@ let inputField = document.getElementById('text-field-hero-input');
 let cartTemp = document.getElementById("temp");
 let cartSpeed = document.getElementById("speed");
 let speedMenuButton = document.getElementById("speedMenu");
+let tempMenuButton = document.getElementById("tempMenu");
+let batteryMenuButton = document.getElementById("batteryMenu");
+let serialMenuButton = document.getElementById("serialMenu");
+let dialogConnect = document.getElementById("blueConnect");
+let dialogDisconnect = document.getElementById("blueDisconnect");
+let fullscreenButton = document.getElementById("fullscreen");
+let fullscreenButton1 = document.getElementById("fullscreenExit");
+
+var fullscreenView = document.getElementById("fullscreen-content");
 
 var splitData;
 
@@ -25,15 +39,54 @@ speedMenuButton.addEventListener('click', function() {
   menu.open = true;
 });
 
-// Подключение к устройству при нажатии на кнопку Connect
-connectButton.addEventListener('click', function() {
-  connect();
+tempMenuButton.addEventListener('click', function() {
+  menu1.open = true;
 });
 
-// Отключение от устройства при нажатии на кнопку Disconnect
-disconnectButton.addEventListener('click', function() {
-  disconnect();
+batteryMenuButton.addEventListener('click', function() {
+  menu2.open = true;
 });
+
+serialMenuButton.addEventListener('click', function() {
+  menu3.open = true;
+});
+
+fullscreenButton.addEventListener('click', function() {
+  fullscreenViewMode();
+});
+
+fullscreenButton1.addEventListener('click', function() {
+  fullscreenViewMode();
+});
+
+function fullscreenViewMode() {
+  if (fullscreenView.style.display === "none") {
+    fullscreenView.style.display = "block";
+  } else {
+    fullscreenView.style.display = "none";
+  }
+
+  if (fullscreenView.style.display === "none") {
+    fullscreenView.style.display = "block";
+  } else {
+    fullscreenView.style.display = "none";
+  }
+}
+
+// Подключение к устройству при нажатии на кнопку Connect
+connectButton.addEventListener('click', function() {
+  dialog.open();
+  bluetoothDialog();
+});
+
+function bluetoothDialog() {
+  dialogConnect.addEventListener('click', function() {
+    connect();
+  });
+  dialogDisconnect.addEventListener('click', function() {
+    disconnect();
+  });
+}
 
 // Обработка события отправки формы
 sendForm.addEventListener('submit', function(event) {
@@ -173,7 +226,7 @@ function receive(data) {
 // Вывод в терминал
 function log(data, type = '') {
   terminalContainer.insertAdjacentHTML('beforeend',
-      '<div' + (type ? ' class="' + type + '"' : '') + '>' + data + '</div>');
+      '<div' + (type ? ' class="' + type + '"' : '') + '>' + '<p class="d">' + data + '</p>' + '</div>');
 }
 
 // Отключиться от подключенного устройства
