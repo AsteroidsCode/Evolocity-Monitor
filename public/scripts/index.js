@@ -1,18 +1,9 @@
 const snackbar = new mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
 const buttonRipple = new mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
-const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
-const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
 const menu = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu'));
-const menu1 = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu1'));
-const menu2 = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu2'));
-const menu3 = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu3'));
 const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
-
-topAppBar.setScrollTarget(document.getElementById('main-content'));
-topAppBar.listen('MDCTopAppBar:nav', () => {
-  drawer.open = !drawer.open;
-});
+const tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
 
 // Получение ссылок на элементы UI
 let connectButton = document.getElementById('connect');
@@ -38,18 +29,6 @@ var splitData;
 
 speedMenuButton.addEventListener('click', function() {
   menu.open = true;
-});
-
-tempMenuButton.addEventListener('click', function() {
-  menu1.open = true;
-});
-
-batteryMenuButton.addEventListener('click', function() {
-  menu2.open = true;
-});
-
-serialMenuButton.addEventListener('click', function() {
-  menu3.open = true;
 });
 
 fullscreenButton.addEventListener('click', function() {
