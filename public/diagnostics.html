@@ -1,74 +1,145 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Evolocity</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Material design components -->
-    <link href="styles/materialTheme.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<head>
+  <meta charset="utf-8">
+  <title>Evolocity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Base JS & CSS -->
-    <link rel="stylesheet" href="styles/diagnostics.css">
+  <!-- Material design components -->
+  <link href="styles/materialTheme.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <!-- Android & Chrome OS support for PWA -->
-    <meta name="theme-color" content="#4caf50"/>
-    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
+  <!-- Base JS & CSS -->
+  <link rel="stylesheet" href="styles/index.css">
 
-    <!-- IOS Support for PWA -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Evolocity">
-    <link rel="apple-touch-icon" href="/images/icons/IOS/icon-152x152.png">
+  <!-- Android & Chrome OS support for PWA -->
+  <meta name="theme-color" content="#4caf50" />
+  <link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
 
-  </head>
-  <body>
+  <!-- IOS Support for PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Evolocity">
+  <link rel="apple-touch-icon" href="./images/icons/IOS/icon-152x152.png">
 
-    <aside class="mdc-drawer mdc-drawer--modal">
-      <div class="mdc-drawer__header">
-        <h3 class="mdc-drawer__title">Evolocity Companion</h3>
-        <h6 class="mdc-drawer__subtitle">By Jonathan Voss</h6>
-      </div>
-      <div class="mdc-drawer__content">
-        <nav class="mdc-list">
-          <a class="mdc-list-item" href="index.html" >
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
-            <span class="mdc-list-item__text">Home</span>
-          </a>
-          <a class="mdc-list-item mdc-list-item--activated" href="diagnostics.html" aria-current="page">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">data_usage</i>
-            <span class="mdc-list-item__text">Diagnostics</span>
-          </a>
-          <a class="mdc-list-item" href="settings.html">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings</i>
-            <span class="mdc-list-item__text">Settings</span>
-          </a>
-        </nav>
-      </div>
-    </aside>
+</head>
 
-    <div class="mdc-drawer-scrim"></div>
+<body>
+  <div id="main-div">
 
-    <div class="mdc-drawer-app-content">
-      <header class="mdc-top-app-bar" id="app-bar">
+    <!-- Top App Bar -->
+    <header class=" mdc-top-app-bar mdc-top-app-bar--fixed">
         <div class="mdc-top-app-bar__row">
-          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-            <span class="mdc-top-app-bar__title">Diagnostics</span>
-          </section>
-        </div>
-      </header>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+              <span class="mdc-top-app-bar__title">Open Sound</span> </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+              <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+                id="connect">bluetooth</button>
+              <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+                 id="fullscreen">fullscreen</button>
+            </section>
+          </div>
+    </header>
 
+      <!-- App Contents -->
       <main class="main-content" id="main-content">
         <div class="mdc-top-app-bar--fixed-adjust">
-          <h1>Hello</h1>
+          <!-- App Top Selection -->
+          <div class="mdc-elevation--z4" id="bottomTab">
+            <div class="mdc-tab-bar" role="tablist">
+              <div class="mdc-tab-scroller">
+                <div class="mdc-tab-scroller__scroll-area">
+                  <div class="mdc-tab-scroller__scroll-content">
+                    <a class="mdc-tab mdc-tab--stacked mdc-tab--active" role="tab" aria-selected="true"
+                      tabindex="0" href="index.html">
+                      <span class="mdc-tab__content">
+                        <span class="mdc-tab__icon material-icons" aria-hidden="true">home</span>
+                        <span class="mdc-tab__text-label">Home</span>
+                      </span>
+                      <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                      </span>
+                      <span class="mdc-tab__ripple"></span>
+                    </a>
+                    <a class="mdc-tab mdc-tab--stacked" role="tab" aria-selected="true" tabindex="1" href="diagnostics.html">
+                      <span class="mdc-tab__content">
+                        <span class="mdc-tab__icon material-icons" aria-hidden="true">data_usage</span>
+                        <span class="mdc-tab__text-label">Diagnostics</span>
+                      </span>
+                      <span class="mdc-tab-indicator mdc-tab-indicator">
+                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                      </span>
+                      <span class="mdc-tab__ripple"></span>
+                    </a>
+                    <a class="mdc-tab mdc-tab--stacked" role="tab" aria-selected="true" tabindex="2" href="settings.html">
+                      <span class="mdc-tab__content">
+                        <span class="mdc-tab__icon material-icons" aria-hidden="true">settings</span>
+                        <span class="mdc-tab__text-label">Settings</span>
+                      </span>
+                      <span class="mdc-tab-indicator mdc-tab-indicator">
+                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                      </span>
+                      <span class="mdc-tab__ripple"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bluetooth Dialog -->
+          <div class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+            aria-describedby="my-dialog-content">
+            <div class="mdc-dialog__container">
+              <div class="mdc-dialog__surface">
+                <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+                <h2 class="mdc-dialog__title" id="my-dialog-title">
+                  <!---->Bluetooth
+                  <!---->
+                </h2>
+                <div class="mdc-dialog__content" id="my-dialog-content">
+                  <ul id="my-list" class="mdc-list">
+                    <li class="mdc-list-item dialog-list" tabindex="-1">
+                      <button type="button" class="mdc-button mdc-dialog__button" id="blueConnect"
+                        data-mdc-dialog-action="connect">
+                        <span class="mdc-button__label">Connect</span>
+                      </button>
+                    </li>
+                    <li class="mdc-list-item mdc-list-item--selected dialog-list" aria-selected="true" tabindex="0">
+                      <button type="button" class="mdc-button mdc-dialog__button" id="blueDisconnect"
+                        data-mdc-dialog-action="disconnect" data-mdc-dialog-button-default>
+                        <span class="mdc-button__label">Disconnect</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-dialog__scrim"></div>
+          </div>
+
+          <!-- Snackbar For Alerts -->
+          <div class="mdc-snackbar">
+            <div class="mdc-snackbar__surface">
+              <div class="mdc-snackbar__label" role="status" aria-live="polite">
+                Can't send photo. Retry in 5 seconds.
+              </div>
+              <div class="mdc-snackbar__actions">
+                <button type="button" class="mdc-button mdc-snackbar__action">Ok</button>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
+  </div>
 
-    <script src="scripts/materialScript.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/diagnostics.js"></script>
-  </body>
+
+  <!-- Javascript for Material Components -->
+  <script src="scripts/materialScript.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
+
 </html>
