@@ -6,9 +6,12 @@
   <title>Evolocity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Material design components -->
-  <link href="styles/materialTheme.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Mapping Intergration -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Base JS & CSS -->
   <link rel="stylesheet" href="styles/index.css">
@@ -26,294 +29,68 @@
 </head>
 
 <body>
-  <!-- Fullscreen UI -->
-  <main class="main-content" id="fullscreen-content">
-    <header class="mdc-top-app-bar" id="fullscreen-app-bar">
-      <div class="mdc-top-app-bar__row">
-        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" id="fullscreenExit"
-            aria-label="Exit">close</button>
-        </section>
-      </div>
-    </header>
-    <div class="mdc-top-app-bar--fixed-adjust">
-      <!-- Cards for Infomation -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js">
+  </script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+    type="text/css" />
+  <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-      <div class="mdc-top-app-bar--fixed-adjust">
-        <div class="fullscreen-outter">
-          <div class="fullscreen-inner">
-            <div class="speed-inner">
+  <div class="SpeedWindow">
 
-            </div>
-            <div class="temp-inner">
+  </div>
 
-            </div>
-            <div class="battery-inner">
+  <div class="MapWindow">
+    <div id='map' style='top: 0; width: 100%; height: 100%;'></div>
+    <script>
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoiYXN0ZXJvaWRzbWFwIiwiYSI6ImNrNDljanQ2ZjAzbWwzaXJ5bnVjOGZmZTIifQ.oZ25eWy6TThlM3-y-DhowQ';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10'
+      });
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+      map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl
+        }),
+        'top-left'
+      );
 
-  <div id="main-div">
-    <!-- App Drawer -->
-    <aside class="mdc-drawer mdc-drawer--modal">
-      <div class="mdc-drawer__header">
-        <h3 class="mdc-drawer__title">Evolocity Companion</h3>
-        <h6 class="mdc-drawer__subtitle">By Jonathan Voss</h6>
-      </div>
-      <div class="mdc-drawer__content">
-        <nav class="mdc-list">
-          <a class="mdc-list-item mdc-list-item--activated" href="index.html" aria-current="page">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
-            <span class="mdc-list-item__text">Home</span>
-          </a>
-          <a class="mdc-list-item" href="diagnostics.html">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">data_usage</i>
-            <span class="mdc-list-item__text">Diagnostics</span>
-          </a>
-          <a class="mdc-list-item" href="settings.html">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings</i>
-            <span class="mdc-list-item__text">Settings</span>
-          </a>
-        </nav>
-      </div>
-    </aside>
-    <div class="mdc-drawer-scrim"></div>
+      // Add zoom and rotation controls to the map.
+      map.addControl(
+        new mapboxgl.NavigationControl(), 'top-left'
+      );
 
-    <!-- Top App Bar -->
-    <header class=" mdc-top-app-bar mdc-top-app-bar--fixed">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-              <span class="mdc-top-app-bar__title">Open Sound</span> </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-              <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
-                id="connect">bluetooth</button>
-              <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
-                 id="fullscreen">fullscreen</button>
-            </section>
-          </div>
-    </header>
+      const geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      });
 
-      <!-- App Contents -->
-      <main class="main-content" id="main-content">
-        <div class="mdc-top-app-bar--fixed-adjust">
-          <!-- App Top Selection -->
-          <div class="mdc-elevation--z4" id="bottomTab">
-            <div class="mdc-tab-bar" role="tablist">
-              <div class="mdc-tab-scroller">
-                <div class="mdc-tab-scroller__scroll-area">
-                  <div class="mdc-tab-scroller__scroll-content">
-                    <a class="mdc-tab mdc-tab--stacked mdc-tab--active" role="tab" aria-selected="true"
-                      tabindex="0" href="index.html">
-                      <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons" aria-hidden="true">home</span>
-                        <span class="mdc-tab__text-label">Home</span>
-                      </span>
-                      <span class="mdc-tab-indicator mdc-tab-indicator--active">
-                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                      </span>
-                      <span class="mdc-tab__ripple"></span>
-                    </a>
-                    <a class="mdc-tab mdc-tab--stacked" role="tab" aria-selected="true" tabindex="1" href="diagnostics.html">
-                      <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons" aria-hidden="true">data_usage</span>
-                        <span class="mdc-tab__text-label">Diagnostics</span>
-                      </span>
-                      <span class="mdc-tab-indicator mdc-tab-indicator">
-                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                      </span>
-                      <span class="mdc-tab__ripple"></span>
-                    </a>
-                    <a class="mdc-tab mdc-tab--stacked" role="tab" aria-selected="true" tabindex="2" href="settings.html">
-                      <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons" aria-hidden="true">settings</span>
-                        <span class="mdc-tab__text-label">Settings</span>
-                      </span>
-                      <span class="mdc-tab-indicator mdc-tab-indicator">
-                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                      </span>
-                      <span class="mdc-tab__ripple"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Cards for Infomation -->
-          <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-              <!-- Card For Cart Speed -->
-              <div class="mdc-layout-grid__cell">
-                <div class="mdc-card demo-card">
-                  <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
-                    <div class="my-card-content">
-                      <div class="demo-card__primary">
-                        <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Cart's
-                          Speed: <span id="speed">0</span> Km/H</h2>
-                        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">Km/H</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mdc-card__actions">
-                    <div class="mdc-card__action-icons">
-                      <div id="demo-menu" class="mdc-menu-surface--anchor">
-                        <button
-                          class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded"
-                          id="speedMenu" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
-                        <div class="mdc-menu mdc-menu-surface">
-                          <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-                            <li class="mdc-list-item" role="menuitem">
-                              <span class="mdc-list-item__text">A Menu Item</span>
-                            </li>
-                            <li class="mdc-list-item" role="menuitem">
-                              <span class="mdc-list-item__text">Another Menu Item</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card For Cart Temp -->
-              <div class="mdc-layout-grid__cell">
-                <div class="mdc-card demo-card">
-                  <div class="mdc-card__primary-action demo-card__primary-action" tabindex="1">
-                    <div class="my-card-content">
-                      <div class="demo-card__primary">
-                        <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Cart's
-                          Temperature: <span id="temp">0</span>°</h2>
-                        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">°C</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mdc-card__actions">
-                    <div class="mdc-card__action-icons">
-                      <div id="demo-menu" class="mdc-menu-surface--anchor">
-                        <button
-                          class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded"
-                          id="tempMenu" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
-                        <div class="mdc-menu mdc-menu1 mdc-menu-surface">
-                          <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-                            <li class="mdc-list-item" role="menuitem">
-                              <span class="mdc-list-item__text">A Menu Item</span>
-                            </li>
-                            <li class="mdc-list-item" role="menuitem">
-                              <span class="mdc-list-item__text">Another Menu Item</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card For Raw Serial Data -->
-              <div class="mdc-layout-grid__cell">
-                <div class="mdc-card demo-card">
-                  <div class="mdc-card__primary-action demo-card__primary-action" tabindex="3">
-                    <div class="mdc-card__media mdc-card__media--16-9 demo-card__media" id="terminal">
-                    </div>
-                    <div class="my-card-content">
-                      <div class="demo-card__primary">
-                        <h2 class="demo-card__title mdc-typography mdc-typography--headline6" id="cardText">Raw Serial
-                        </h2>
-                        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2" id="cardText">Input
-                          From Cart monitor</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mdc-card__actions">
-                    <form id="send-form">
-                      <div class="mdc-text-field mdc-text-field--outlined">
-                        <input class="mdc-text-field__input" id="text-field-hero-input">
-                        <div class="mdc-notched-outline">
-                          <div class="mdc-notched-outline__leading"></div>
-                          <div class="mdc-notched-outline__notch">
-                            <label for="text-field-hero-input" class="mdc-floating-label">Command</label>
-                          </div>
-                          <div class="mdc-notched-outline__trailing"></div>
-                        </div>
-                      </div>
-                    </form>
-                    <div class="mdc-card__action-icons">
-                      <div id="demo-menu" class="mdc-menu-surface--anchor">
-                        <button
-                          class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded"
-                          id="serialMenu" title="More options" data-mdc-ripple-is-unbounded="true">more_vert</button>
-                        <div class="mdc-menu mdc-menu3 mdc-menu-surface">
-                          <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-                            <li class="mdc-list-item" role="menuitem">
-                              <span class="mdc-list-item__text">A Menu Item</span>
-                            </li>
-                            <li class="mdc-list-item" role="menuitem">
-                              <span class="mdc-list-item__text">Another Menu Item</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      // Add geolocate control to the map.
+      map.addControl(geolocate, 'top-left');
 
-          <!-- Bluetooth Dialog -->
-          <div class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
-            aria-describedby="my-dialog-content">
-            <div class="mdc-dialog__container">
-              <div class="mdc-dialog__surface">
-                <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-                <h2 class="mdc-dialog__title" id="my-dialog-title">
-                  <!---->Bluetooth
-                  <!---->
-                </h2>
-                <div class="mdc-dialog__content" id="my-dialog-content">
-                  <ul id="my-list" class="mdc-list">
-                    <li class="mdc-list-item dialog-list" tabindex="-1">
-                      <button type="button" class="mdc-button mdc-dialog__button" id="blueConnect"
-                        data-mdc-dialog-action="connect">
-                        <span class="mdc-button__label">Connect</span>
-                      </button>
-                    </li>
-                    <li class="mdc-list-item mdc-list-item--selected dialog-list" aria-selected="true" tabindex="0">
-                      <button type="button" class="mdc-button mdc-dialog__button" id="blueDisconnect"
-                        data-mdc-dialog-action="disconnect" data-mdc-dialog-button-default>
-                        <span class="mdc-button__label">Disconnect</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="mdc-dialog__scrim"></div>
-          </div>
-
-          <!-- Snackbar For Alerts -->
-          <div class="mdc-snackbar">
-            <div class="mdc-snackbar__surface">
-              <div class="mdc-snackbar__label" role="status" aria-live="polite">
-                Can't send photo. Retry in 5 seconds.
-              </div>
-              <div class="mdc-snackbar__actions">
-                <button type="button" class="mdc-button mdc-snackbar__action">Ok</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
+      map.on('load', function () {
+        geolocate.trigger();
+      });
+    </script>
   </div>
 
 
-  <!-- Javascript for Material Components -->
-  <script src="scripts/materialScript.js"></script>
-  <script src="scripts/main.js"></script>
-  <script src="scripts/index.js"></script>
+  <div class="NavigationMenu">
+    <button class="NavButton"><i class="material-icons"> build </i></button>
+    <button class="NavButton"><i class="material-icons"> library_music </i></button>
+    <button class="NavButton"><i class="material-icons"> offline_bolt </i></button>
+    <button class="NavButton"><i class="material-icons"> donut_large </i></button>
+    <button class="NavButton"><i class="material-icons"> eco </i></button>
+    <button class="NavButton"><i class="material-icons"> signal_cellular_4_bar </i></button>
+    <button class="NavButton"><i class="material-icons"> volume_up </i></button>
+  </div>
 </body>
 
 </html>
