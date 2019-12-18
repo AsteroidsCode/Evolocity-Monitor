@@ -10,6 +10,10 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 
+  <!-- Spotify Intergration -->
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script src="scripts/spotifyHandler.js"></script>
+
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -39,7 +43,9 @@
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
   <div class="SpeedWindow">
-
+    <div class="SpeedInfomation"></div>
+    <div class="SpeedRoad">
+    </div>
   </div>
 
   <div class="MapWindow">
@@ -80,7 +86,6 @@
       });
     </script>
   </div>
-
 
   <div class="NavigationMenu">
     <button class="NavButton"><i class="material-icons"> build </i></button>
