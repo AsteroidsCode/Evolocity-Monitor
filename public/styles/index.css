@@ -4,6 +4,16 @@ body {
   background-color: #000000;
 }
 
+.WindowManager {
+  width: 100%;
+  height: 88%;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  border-radius: 2vh;
+}
+
 .NavigationMenu {
   width: 100%;
   height: 12%;
@@ -18,28 +28,28 @@ body {
 }
 
 .SpeedWindow {
-  height: 88%;
+  height: 100%;
   width: 30%;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 5;
 
-  border-radius: 3% 0px 0px 3%;
+  border-radius: 2vh 0px 0px 2vh;
   background-color: #eeeeee;
   box-shadow: 5px 0px 14px 3px rgba(0, 0, 0, 0.1);
 }
 
 .MapWindow {
-  height: 88%;
+  height: 100%;
   width: 70%;
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0;
 }
 
 #map {
-  border-radius: 0px 3% 3% 0px;
+  border-radius: 0px 2vh 2vh 0px;
 }
 
 .NavButton {
@@ -51,11 +61,21 @@ body {
   vertical-align: middle;
   border: none;
 
+  color: #f5f5f5;
   background-color: #000000;
 }
 
-.material-icons {
-  color: #f5f5f5;
+.MusicNavButton {
+  height: 100%;
+  width: 8.33333333333%;
+  font-size: 5vh;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  float: right;
+
+  color: #000000;
 }
 
 .SpeedInfomation {
@@ -63,4 +83,52 @@ body {
   width: 100%;
 
   border-bottom: 0.5vh;
+}
+
+.SpotifyWindow {
+  height: 18%;
+  width: 100%;
+  position: absolute;
+  display: none;
+  z-index: 7;
+  left: 0;
+  bottom: 0;
+
+  background-color: #f0f0f0;
+  box-shadow: 5px 0px 14px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 2vh 2vh;
+}
+
+.SpotifyImage {
+  height: 100%;
+  width: 16vh;
+  float: left;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 0 0 0 2vh;
+}
+
+.SpotifyTitle {
+  width: auto;
+  position: absolute;
+  font-size: 3.5vh;
+  margin-top: 3vh;
+  margin-bottom: 0;
+  margin-left: 18vh;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+}
+
+.SpotifyArtist {
+  width: auto;
+  position: absolute;
+  font-size: 3vh;
+  margin-top: 7.6vh;
+  margin-bottom: 0;
+  margin-left: 18vh;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }

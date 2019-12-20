@@ -14,11 +14,13 @@
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script src="scripts/spotifyHandler.js"></script>
 
-  <!-- Material Icons -->
+  <!-- Material Icons & Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
   <!-- Base JS & CSS -->
   <link rel="stylesheet" href="styles/index.css">
+  <script src="scripts/buttonHandler.js"></script>
 
   <!-- Android & Chrome OS support for PWA -->
   <meta name="theme-color" content="#4caf50" />
@@ -42,54 +44,72 @@
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-  <div class="SpeedWindow">
-    <div class="SpeedInfomation"></div>
-    <div class="SpeedRoad">
+  <div class="WindowManager">
+    <!-- Default window for driver speed and gear. -->
+    <div class="SpeedWindow">
+      <div class="SpeedInfomation"></div>
+      <div class="SpeedRoad">
+      </div>
+    </div>
+
+    <!-- Default window for driver hud. -->
+    <div class="MapWindow">
+      <div id='map' style='top: 0; width: 100%; height: 100%;'></div>
+      <script>
+        mapboxgl.accessToken =
+          'pk.eyJ1IjoiYXN0ZXJvaWRzbWFwIiwiYSI6ImNrNDljanQ2ZjAzbWwzaXJ5bnVjOGZmZTIifQ.oZ25eWy6TThlM3-y-DhowQ';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/light-v10'
+        });
+
+        map.addControl(
+          new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+          }),
+          'top-left'
+        );
+
+        // Add zoom and rotation controls to the map.
+        map.addControl(
+          new mapboxgl.NavigationControl(), 'top-left'
+        );
+
+        const geolocate = new mapboxgl.GeolocateControl({
+          positionOptions: {
+            enableHighAccuracy: true
+          },
+          trackUserLocation: true
+        });
+
+        // Add geolocate control to the map.
+        map.addControl(geolocate, 'top-left');
+
+        map.on('load', function () {
+          geolocate.trigger();
+        });
+      </script>
+    </div>
+
+    <!-- Extra window for spotify playback. -->
+    <div class="SpotifyWindow" id="musicWindow">
+      <div class="SpotifyImage" id="AlbumImage"></div>
+      <h1 class="SpotifyTitle" id="SongText"></h1>
+      <h3 class="SpotifyArtist" id="ArtistText"></h3>
+
+      <button class="MusicNavButton" onclick="openMusicWindow()"><i class="material-icons" id="alt"> close </i></button>
+      <button class="MusicNavButton"><i class="material-icons" id="alt"> skip_next </i></button>
+      <button class="MusicNavButton" onclick="tooglePlayButton()"><i class="material-icons" id="alt-play"> play_arrow </i></button>
+      <button class="MusicNavButton"><i class="material-icons" id="alt"> skip_previous </i></button>
     </div>
   </div>
 
-  <div class="MapWindow">
-    <div id='map' style='top: 0; width: 100%; height: 100%;'></div>
-    <script>
-      mapboxgl.accessToken =
-        'pk.eyJ1IjoiYXN0ZXJvaWRzbWFwIiwiYSI6ImNrNDljanQ2ZjAzbWwzaXJ5bnVjOGZmZTIifQ.oZ25eWy6TThlM3-y-DhowQ';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10'
-      });
 
-      map.addControl(
-        new MapboxGeocoder({
-          accessToken: mapboxgl.accessToken,
-          mapboxgl: mapboxgl
-        }),
-        'top-left'
-      );
-
-      // Add zoom and rotation controls to the map.
-      map.addControl(
-        new mapboxgl.NavigationControl(), 'top-left'
-      );
-
-      const geolocate = new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true
-      });
-
-      // Add geolocate control to the map.
-      map.addControl(geolocate, 'top-left');
-
-      map.on('load', function () {
-        geolocate.trigger();
-      });
-    </script>
-  </div>
-
+  <!-- Navigation Menu for other windows. -->
   <div class="NavigationMenu">
     <button class="NavButton"><i class="material-icons"> build </i></button>
-    <button class="NavButton"><i class="material-icons"> library_music </i></button>
+    <button class="NavButton" onclick="openMusicWindow()"><i class="material-icons"> library_music </i></button>
     <button class="NavButton"><i class="material-icons"> offline_bolt </i></button>
     <button class="NavButton"><i class="material-icons"> donut_large </i></button>
     <button class="NavButton"><i class="material-icons"> eco </i></button>
