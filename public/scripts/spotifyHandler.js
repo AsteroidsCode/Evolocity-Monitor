@@ -1,5 +1,5 @@
 window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = 'BQC_Cva2c3s7Qqk02zl0cFofTrObWpr5_xJXbzc8aofFxINcwMgvQeFYuFwz83hB0LimoikPyflPOJJNScBy7bWJNzQVUdpskAANipAHvc2xkgGYvNRu1b93m4Mf-jw6_6MCvYwI2RgedPMMnU7QhYHSlqREATlWsNz2ZtSHnBBkM-XJjeg';
+    const token = 'BQDrzNIXoTWva1mzabr4cZPhy92FBeWRjbs5HAkJZwIXQZmd9csLAtj6jAGfn3L61k1RlUocUN6HpZaaAQx2NLyRu_AtPvkUhn2VX5vSG2aXiGqpLxChfTsxSypy2osofGpN6AGYMMhHdJ4YNDc9s9SCSV8i20sLQqcnB2QVlXYrQbspoEg';
     const player = new Spotify.Player({
         name: 'Green Model B',
         getOAuthToken: cb => {
@@ -34,6 +34,11 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         console.log(state);
         player.getCurrentState().then(state => {
             if (!state) {
+                playButton.innerHTML = " play_arrow ";
+
+                document.getElementById("AlbumImage").style.backgroundImage = "none";
+            document.getElementById("SongText").innerHTML = "Connect Your Device";
+            document.getElementById("ArtistText").innerHTML = "Spotify";
                 console.error('User is not playing music through the Web Playback SDK');
                 return;
             }
@@ -45,6 +50,11 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
             console.log('Currently Playing', current_track);
             console.log('Playing Next', next_track);
+            if (state.paused) {
+                playButton.innerHTML = " play_arrow ";
+            } else {
+                playButton.innerHTML = " pause ";
+            }
 
             albumImage = current_track.album.images[0].url;
             songText = current_track.name;
@@ -54,6 +64,14 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             document.getElementById("ArtistText").innerHTML = artistText;
         });
     });
+
+    var playButton = document.getElementById("alt-play");
+    (function () {
+        function PlayButton() {
+            player.togglePlay();
+        }
+        document.getElementById('alt-play').addEventListener('click', PlayButton, true);
+    })();
 
     // Ready
     player.addListener('ready', ({
@@ -72,20 +90,5 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     // Connect to the player!
     player.connect();
 
-    function tooglePlayButton() {
-        var playButton = document.getElementById("alt-play");
-        if (playButton.innerHTML === " play_arrow ") {
-            playButton.innerHTML = " pause ";
     
-            player.togglePlay().then(() => {
-                console.log('Toggled playback!');
-            });
-        } else {
-            playButton.innerHTML = " play_arrow ";
-    
-            player.togglePlay().then(() => {
-                console.log('Toggled playback!');
-            });
-        }
-    }
 };

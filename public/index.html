@@ -12,7 +12,6 @@
 
   <!-- Spotify Intergration -->
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <script src="scripts/spotifyHandler.js"></script>
 
   <!-- Material Icons & Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,6 +20,7 @@
   <!-- Base JS & CSS -->
   <link rel="stylesheet" href="styles/index.css">
   <script src="scripts/buttonHandler.js"></script>
+  <script src="scripts/spotifyHandler.js"></script>
 
   <!-- Android & Chrome OS support for PWA -->
   <meta name="theme-color" content="#4caf50" />
@@ -100,7 +100,8 @@
 
       <button class="MusicNavButton" onclick="openMusicWindow()"><i class="material-icons" id="alt"> close </i></button>
       <button class="MusicNavButton"><i class="material-icons" id="alt"> skip_next </i></button>
-      <button class="MusicNavButton" onclick="tooglePlayButton()"><i class="material-icons" id="alt-play"> play_arrow </i></button>
+      <button class="MusicNavButton"><i class="material-icons" id="alt-play"> play_arrow
+        </i></button>
       <button class="MusicNavButton"><i class="material-icons" id="alt"> skip_previous </i></button>
     </div>
   </div>
