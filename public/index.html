@@ -8,10 +8,14 @@
 
   <!-- Mapping Intergration -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet'/>
 
   <!-- Spotify Intergration -->
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+  <!-- Color Analyzer For Images -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+  <script src="https://www.color-blindness.com/color-name-hue-tool/js/ntc.js"></script>
 
   <!-- Material Icons & Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -44,7 +48,11 @@
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-  <div class="WindowManager">
+  <div class="BootWindow" id="SplashScreen">
+
+  </div>
+
+  <div class="WindowManager" id="UI">
     <!-- Default window for driver speed and gear. -->
     <div class="SpeedWindow">
       <div class="SpeedInfomation"></div>
@@ -93,19 +101,17 @@
     </div>
 
     <!-- Extra window for spotify playback. -->
-    <div class="SpotifyWindow" id="musicWindow">
-      <div class="SpotifyImage" id="AlbumImage"></div>
+    <dimiv class="SpotifyWindow" id="musicWindow">
+      <img class="SpotifyImage" id="AlbumImage"></img>
       <h1 class="SpotifyTitle" id="SongText"></h1>
       <h3 class="SpotifyArtist" id="ArtistText"></h3>
 
-      <button class="MusicNavButton" onclick="openMusicWindow()"><i class="material-icons" id="alt"> close </i></button>
-      <button class="MusicNavButton"><i class="material-icons" id="alt"> skip_next </i></button>
-      <button class="MusicNavButton"><i class="material-icons" id="alt-play"> play_arrow
-        </i></button>
-      <button class="MusicNavButton"><i class="material-icons" id="alt"> skip_previous </i></button>
+      <button class="MusicNavButton" id="musicButton" onclick="openMusicWindow()"><i class="material-icons" id="alt"> close </i></button>
+      <button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-next"> skip_next </i></button>
+      <button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-play"> play_arrow</i></button>
+      <button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-previous"> skip_previous </i></button>
     </div>
   </div>
-
 
   <!-- Navigation Menu for other windows. -->
   <div class="NavigationMenu">

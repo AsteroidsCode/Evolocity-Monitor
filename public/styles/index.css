@@ -27,6 +27,16 @@ body {
   background-color: #000000;
 }
 
+.BootWindow {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  bottom: 0;
+  z-index: 15;
+
+  background-color: #f5f5f5;
+}
+
 .SpeedWindow {
   height: 100%;
   width: 30%;
@@ -76,7 +86,8 @@ body {
   float: right;
 
   color: #000000;
-  background-color: #f0f0f0;
+  background-color: transparent;
+  border-radius: 2vh;
 }
 
 .SpeedInfomation {
