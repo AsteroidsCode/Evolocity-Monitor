@@ -99,16 +99,17 @@ body {
 
 .SpotifyWindow {
   height: 18%;
-  width: 100%;
+  width: 70%;
   position: absolute;
-  display: none;
+  align-items: center;
+  display: flex;
   z-index: 7;
-  left: 0;
+  right: 0;
   bottom: 0;
 
   background-color: #f0f0f0;
   box-shadow: 5px 0px 14px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 2vh 2vh;
+  border-radius: 0 0 2vh 0;
 }
 
 .SpotifyImage {
@@ -118,19 +119,18 @@ body {
 
   background-size: contain;
   background-repeat: no-repeat;
-  border-radius: 0 0 0 2vh;
+  border-radius: 0 0 0 0;
 }
 
 .SpotifyTitle {
   width: auto;
   position: absolute;
   font-size: 3.5vh;
-  margin-top: 3vh;
-  margin-bottom: 0;
-  margin-left: 18vh;
+  float: left;
 
-  font-family: 'Roboto', sans-serif;
-  font-weight: bolder;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .SpotifyArtist {
@@ -141,6 +141,7 @@ body {
   margin-bottom: 0;
   margin-left: 18vh;
 
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
