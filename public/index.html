@@ -61,7 +61,7 @@
 
 			</div>
 			<div class="SpeedHeader">
-                <h1 class="SpeedText">0</h1>
+                <h1 id="speed" class="SpeedText">0</h1>
 			</div>
 			<div class="SpeedGears">
 
@@ -86,7 +86,7 @@
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl
           }),
-          'top-right'
+          'top-left'
         );
 
         // Add zoom and rotation controls to the map.
@@ -102,7 +102,7 @@
         });
 
         // Add geolocate control to the map.
-        map.addControl(geolocate, 'top-left');
+        map.addControl(geolocate, 'bottom-right');
 
         map.on('load', function () {
           geolocate.trigger();
