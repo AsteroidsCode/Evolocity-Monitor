@@ -126,6 +126,9 @@ body {
   width: auto;
   position: absolute;
   font-size: 3.5vh;
+  margin-top: 4.1vh;
+  margin-bottom: 0;
+  margin-left: 18vh;
   float: left;
 
   font-family: 'Montserrat', sans-serif;
