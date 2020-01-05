@@ -145,3 +145,13 @@ body {
   font-style: normal;
   font-weight: 500;
 }
+
+.speedText {
+    width: 100%;
+    font-size: 5vh;
+    text-align: center;
+    align-self: center;
+
+    font-family:  'Montserrat', sans-serif;
+    font-weight: normal;
+}
