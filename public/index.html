@@ -108,8 +108,8 @@
 			</script>
 		</div>
 
-		<!-- Extra window for spotify playback. -->
-		<dimiv class="SpotifyWindow" id="musicWindow">
+		<!-- Window for spotify playback. -->
+		<div class="SpotifyWindow" id="musicWindow">
 			<img class="SpotifyImage" id="AlbumImage"></img>
 			<h1 class="SpotifyTitle" id="SongText"></h1>
 			<h3 class="SpotifyArtist" id="ArtistText"></h3>
@@ -122,12 +122,22 @@
 					play_arrow</i></button>
 			<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-previous"> skip_previous
 				</i></button>
-	</div>
+		</div>
+
+		<div class="SettingsWindow" id="settingWindow">
+			<div class="SettingsTab">
+				<button class="SettingsButton" onclick="openSettingsWindow()"><i class="material-icons settings"> close </i><h1 class="SettingsH1">Spotify</h1></button>
+			</div>
+			<div class="SettingsControl">
+				
+			</div>
+			
+		</div>
 	</div>
 
 	<!-- Navigation Menu for other windows. -->
 	<div class="NavigationMenu">
-		<button class="NavButton"><i class="material-icons"> build </i></button>
+		<button class="NavButton" onclick="openSettingsWindow()"><i class="material-icons"> build </i></button>
 		<button class="NavButton" onclick="openMusicWindow()"><i class="material-icons"> library_music </i></button>
 		<button class="NavButton"><i class="material-icons"> offline_bolt </i></button>
 		<button class="NavButton"><i class="material-icons"> donut_large </i></button>

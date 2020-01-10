@@ -98,25 +98,92 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
 }
 
 .SpeedInfomation {
+  top: 0;
   height: 30%;
   width: 100%;
+}
 
-  border-bottom: 0.5vh;
+.SpeedRoad {
+  height: 60%;
+  width: 100%;
+}
+
+.SettingsWindow {
+  height: 98%;
+  width: 68%;
+  position: absolute;
+  display: none;
+  right: 0;
+  bottom: 0;
+  z-index: 7;
+  margin-right: 1%;
+
+  background-color: #F0F0F0;
+  border-radius: 2vh 2vh 0 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.SettingsTab {
+  height: 100%;
+  width: 40%;
+  position: absolute;
+  display: table;
+  table-layout: fixed;
+  top: 0;
+  left: 0;
+
+  border-radius: 2vh 0 0 0;
+  background-color: #ffffff;
+}
+
+.SettingsControl {
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  border-radius: 2vh 0 0 0;
+}
+
+.SettingsButton {
+  width: 100%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #ffffff;
+}
+
+.material-icons.settings {
+  font-size: 5vh;
+}
+
+.SettingsH1 {
+  font-size: 3.5vh;
+  vertical-align: middle;
+  margin: 0;
+  position: absolute;
 }
 
 .SpotifyWindow {
   height: 18%;
-  width: 70%;
+  width: 68%;
   position: absolute;
   align-items: center;
-  display: block;
+  display: none;
   z-index: 7;
   right: 0;
   bottom: 0;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 1%;
 
   background-color: #f0f0f0;
   box-shadow: 5px 0px 14px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 2vh 0;
+  border-radius: 2vh 2vh 2vh 2vh;
 }
 
 .SpotifyImage {
@@ -126,7 +193,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
 
   background-size: contain;
   background-repeat: no-repeat;
-  border-radius: 0 0 0 0;
+  border-radius: 2vh 0px 0px 2vh;
 }
 
 .SpotifyTitle {
