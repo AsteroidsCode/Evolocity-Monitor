@@ -126,10 +126,33 @@
 
 		<div class="SettingsWindow" id="settingWindow">
 			<div class="SettingsTab">
-				<button class="SettingsButton" onclick="openSettingsWindow()"><i class="material-icons settings"> close </i><h1 class="SettingsH1">Spotify</h1></button>
+				<button class="SettingsButton" onclick="openSettingsWindow()">
+					<i class="material-icons settings"> close </i>
+					<h1 class="SettingsH1"></h1>
+				</button>
+				<button class="SettingsButton" onclick="openContentSpotify()">
+					<i class="material-icons settings"> library_music </i>
+					<h1 class="SettingsH1">Spotify</h1>
+				</button>
+				<button class="SettingsButton" onclick="openContentEco()">
+					<i class="material-icons settings"> eco </i>
+					<h1 class="SettingsH1">Eco Mode</h1>
+				</button>
+				<button class="SettingsButton" onclick="openContentConnect()">
+					<i class="material-icons settings"> wifi_tethering </i>
+					<h1 class="SettingsH1">Connections</h1>
+				</button>
 			</div>
 			<div class="SettingsControl">
-				
+				<div class="SettingsPannel" id="SettingsSpotify">
+					<input placeholder="Spotify Token">
+				</div>
+				<div class="SettingsPannel" id="SettingsEco">
+					<input>
+				</div>
+				<div class="SettingsPannel" id="SettingsConnect">
+					<input>
+				</div>
 			</div>
 			
 		</div>
