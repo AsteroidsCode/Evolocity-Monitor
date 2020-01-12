@@ -106,6 +106,10 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
 .SpeedRoad {
   height: 60%;
   width: 100%;
+
+  background-image: url(/images/Cart.png);
+  background-size: contain;
+  background-repeat: space;
 }
 
 .SettingsWindow {
@@ -200,13 +204,26 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   border-radius: 2vh 2vh 2vh 2vh;
 }
 
-input {
-  padding: 1vh;
-  border-radius: 2vh;
+.settingsInput {
+  padding: 3vh;
+  border-radius: 5vh;
+  width: 80%;
 
   border: none;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), #FFFFFF;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #DBDBDB;
+  color: #151515;
+}
+
+.settingsSubmit {
+  border: 0;
+  width: 30%;
+  padding: 2vh;
+  border-radius: 5vh;
+  margin-top: 2vh;
+
+  background-color: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #151515;
 }
 
 .SpotifyImage {

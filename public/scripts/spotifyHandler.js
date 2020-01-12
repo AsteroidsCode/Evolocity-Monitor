@@ -1,11 +1,14 @@
 window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = 'BQBQj0julHzHFaOSU2dvJV3z8TRI9ax0ZC11U5r50Ix8zEluA7di272p1wq-4iEU80F2wXjjxf0Cy2wUkbg5x8SGceYuZpCLQlp71dzvDeD9c_34uZH8DjujLglY3c6XPqoNn4bGUDkJuHwgU-eNUhr-lfygdHrOX9Ln4s1N4oIDaNVXbdU';
+    var token = 'BQBY7bRSJXx80rQl0_JDnjEhrh7HfhlAVglesA4W85Tucr3JyXDOMS--iu8hgXfseoEwPQOxseA0EAJtKDS2U3Hv35OyadknaYlHaAdhwR_9rlziMgFszMNorjANgW3MyU4m5ZTHU4aqE8ddVn54ZEILw_hfMN1YZ8JWA4_p7NHUixcWZ8s';
+    var name = "TESLA Model 3";
     const player = new Spotify.Player({
-        name: 'Green Model B',
+        name: name,
         getOAuthToken: cb => {
             cb(token);
         }
     });
+
+    document.getElementById("SpotifyToken").value = name;
 
     // Error handling
     player.addListener('initialization_error', ({
@@ -40,6 +43,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         document.getElementById("musicWindow").style.backgroundColor = "#1ED760";
         lightOrDark("#1ED760");
     }
+
+
 
     // Playback status updates
     player.addListener('player_state_changed', state => {
@@ -180,6 +185,16 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         document.getElementById('alt-previous').addEventListener('click', PreviousButton, true);
     })();
 
+    (function () {
+        function SetName() {
+            name = document.getElementById("SpotifyToken").value;
+            console.log(name);
+
+            player.setName(name);
+        }
+        document.getElementById('nameSubmit').addEventListener('click', SetName, true);
+    })();
+
     // Ready
     player.addListener('ready', ({
         device_id
@@ -201,6 +216,4 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     // Connect to the player!
     player.connect();
-
-
 };
