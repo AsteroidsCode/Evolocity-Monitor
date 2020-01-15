@@ -1,14 +1,14 @@
 window.onSpotifyWebPlaybackSDKReady = () => {
-    var token = 'BQBY7bRSJXx80rQl0_JDnjEhrh7HfhlAVglesA4W85Tucr3JyXDOMS--iu8hgXfseoEwPQOxseA0EAJtKDS2U3Hv35OyadknaYlHaAdhwR_9rlziMgFszMNorjANgW3MyU4m5ZTHU4aqE8ddVn54ZEILw_hfMN1YZ8JWA4_p7NHUixcWZ8s';
+    var token ="BQBIaPZkq7SqHG-5bOagjicFXlABuKJXSEWgbpUqQBakhRrg9kHvh3ZrRsdg4i3FcjNHkfy8yeZEV4IGlNar41whTeT1bP-sPjtKQkuhdVMcyVxXLG9rTCc5fvvfsM9zNoa1WyE8OQoh5PwA8DmJCWhPqVmOkk-pLOvbmR7nZPzE7GmdOdo";
     var name = "TESLA Model 3";
     const player = new Spotify.Player({
-        name: name,
+        name: localStorage.CartName,
         getOAuthToken: cb => {
             cb(token);
         }
     });
 
-    document.getElementById("SpotifyToken").value = name;
+    document.getElementById("SpotifyToken").value = localStorage.CartName;
 
     // Error handling
     player.addListener('initialization_error', ({
@@ -187,7 +187,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     (function () {
         function SetName() {
-            name = document.getElementById("SpotifyToken").value;
+            localStorage.CartName = document.getElementById("SpotifyToken").value;
+            name = localStorage.CartName;
             console.log(name);
 
             player.setName(name);

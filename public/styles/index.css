@@ -1,7 +1,14 @@
+:root {
+  --color-black-background: #000000;
+  --color-white-background: #ffffff;
+  --color-black-text: rgba(0, 0, 0, 0.4);
+  --color-black-text-alt: rgba(0,0,0,0.6);
+}
+
 body {
   overflow: hidden;
 
-  background-color: #000000;
+  background-color: var(--color-black-background);
 }
 
 .WindowManager {
@@ -24,7 +31,7 @@ body {
   display: table;
   table-layout: fixed;
 
-  background-color: #000000;
+  background-color: var(--color-black-background);
 }
 
 .SpeedWindow {
@@ -47,12 +54,12 @@ body {
   right: 0;
   bottom: 0;
 
-  background-color: #000000;
+  background-color: var(--color-black-background);
   border-radius: 0px 2vh 2vh 0px;
 }
 
 #map {
-  background-color: #000000;
+  background-color: var(--color-black-background);
   border-radius: 0px 2vh 2vh 0px;
 }
 
@@ -79,7 +86,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   border: none;
 
   color: #f5f5f5;
-  background-color: #000000;
+  background-color: var(--color-black-background);
 }
 
 .MusicNavButton {
@@ -107,9 +114,9 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   height: 60%;
   width: 100%;
 
-  background-image: url(/images/Cart.png);
+  background-image: url(../images/Cart.png);
   background-size: contain;
-  background-repeat: space;
+  background-repeat: no-repeat;
 }
 
 .SettingsWindow {
@@ -138,7 +145,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   left: 0;
 
   border-radius: 2vh 0 0 0;
-  background-color: #ffffff;
+  background-color: var(--color-white-background);
 }
 
 .SettingsControl {
@@ -156,7 +163,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   width: 100%;
   display: none;
   padding-left: 4vh;
-  padding-top: 6vh;
+  padding-top: 4vh;
 }
 
 .SettingsButton {
@@ -169,8 +176,8 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   align-items: center;
   border: none;
 
-  color: rgba(0, 0, 0, 0.6);
-  background-color: #ffffff;
+  color: var(--color-black-text-alt);
+  background-color: var(--color-white-background);
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
@@ -178,6 +185,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
 .SettingsTitle {
   font-size: 3vh;
   padding-left: 1vh;
+  padding-top: 2vh;
   margin-bottom: 1.5vh;
 
   font-family: 'Montserrat', sans-serif;
@@ -191,7 +199,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
 .SettingsH1 {
   font-size: 3.2vh;
   vertical-align: middle;
-  margin-top: 0.3vh;
+  margin-top: 1vh;
   margin-left: 1.8vh;
   position: absolute;
   display: inline-block;
@@ -237,7 +245,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   border-radius: 5vh;
   margin-top: 2vh;
 
-  background-color: #ffffff;
+  background-color: var(--color-white-background);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #151515;
   font-family: 'Montserrat', sans-serif;
@@ -305,7 +313,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
 
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--color-black-text);
 }
 
 .Speedometer {
@@ -314,7 +322,7 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   margin-left: 1.25vw;
   margin-right: 1.25vw;
 
-  border-bottom: rgba(0, 0, 0, 0.4) solid 0.3vh;
+  border-bottom: var(--color-black-text) solid 0.3vh;
 }
 
 .SpeedText {
