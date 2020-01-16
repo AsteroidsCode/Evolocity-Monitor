@@ -1,68 +1,19 @@
-const snackbar = new mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
-const buttonRipple = new mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
-const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
-const menu = new mdc.menu.MDCMenu.attachTo(document.querySelector('.mdc-menu'));
-const dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
-const tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
-
 // Получение ссылок на элементы UI
 let connectButton = document.getElementById('connect');
 let disconnectButton = document.getElementById('disconnect');
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
-let inputField = document.getElementById('text-field-hero-input');
-let cartTemp = document.getElementById("temp");
-let cartSpeed = document.getElementById("speed");
-let speedMenuButton = document.getElementById("speedMenu");
-let tempMenuButton = document.getElementById("tempMenu");
-let batteryMenuButton = document.getElementById("batteryMenu");
-let serialMenuButton = document.getElementById("serialMenu");
-let dialogConnect = document.getElementById("blueConnect");
-let dialogDisconnect = document.getElementById("blueDisconnect");
-let fullscreenButton = document.getElementById("fullscreen");
-let fullscreenButton1 = document.getElementById("fullscreenExit");
-
-var fullscreenView = document.getElementById("fullscreen-content");
-var mainView = document.getElementById("main-div");
-
-var splitData;
-
-speedMenuButton.addEventListener('click', function() {
-  menu.open = true;
-});
-
-fullscreenButton.addEventListener('click', function() {
-  fullscreenViewMode();
-});
-
-fullscreenButton1.addEventListener('click', function() {
-  fullscreenViewMode();
-});
-
-function fullscreenViewMode() {
-  if (fullscreenView.style.display === "none") {
-    fullscreenView.style.display = "block";
-    mainView.style.display = "none";
-  } else {
-    fullscreenView.style.display = "none";
-    mainView.style.display = "block";
-  }
-}
+let inputField = document.getElementById('input');
 
 // Подключение к устройству при нажатии на кнопку Connect
 connectButton.addEventListener('click', function() {
-  dialog.open();
-  bluetoothDialog();
+  connect();
 });
 
-function bluetoothDialog() {
-  dialogConnect.addEventListener('click', function() {
-    connect();
-  });
-  dialogDisconnect.addEventListener('click', function() {
-    disconnect();
-  });
-}
+// Отключение от устройства при нажатии на кнопку Disconnect
+disconnectButton.addEventListener('click', function() {
+  disconnect();
+});
 
 // Обработка события отправки формы
 sendForm.addEventListener('submit', function(event) {
@@ -81,10 +32,6 @@ let characteristicCache = null;
 // Промежуточный буфер для входящих данных
 let readBuffer = '';
 
-function scrollTerminal() {
-  terminal.scrollTop = terminal.scrollHeight;
-}
-
 // Запустить выбор Bluetooth устройства и подключиться к выбранному
 function connect() {
   return (deviceCache ? Promise.resolve(deviceCache) :
@@ -97,14 +44,12 @@ function connect() {
 // Запрос выбора Bluetooth устройства
 function requestBluetoothDevice() {
   log('Requesting bluetooth device...');
-  scrollTerminal();
 
   return navigator.bluetooth.requestDevice({
     filters: [{services: [0xFFE0]}],
   }).
       then(device => {
         log('"' + device.name + '" bluetooth device selected');
-        scrollTerminal();
         deviceCache = device;
         deviceCache.addEventListener('gattserverdisconnected',
             handleDisconnection);
@@ -119,7 +64,6 @@ function handleDisconnection(event) {
 
   log('"' + device.name +
       '" bluetooth device disconnected, trying to reconnect...');
-  scrollTerminal();
 
   connectDeviceAndCacheCharacteristic(device).
       then(characteristic => startNotifications(characteristic)).
@@ -133,24 +77,20 @@ function connectDeviceAndCacheCharacteristic(device) {
   }
 
   log('Connecting to GATT server...');
-  scrollTerminal();
 
   return device.gatt.connect().
       then(server => {
         log('GATT server connected, getting service...');
-        scrollTerminal();
-        snackbar.labelText = "Your Connected";
-        snackbar.open();
+
         return server.getPrimaryService(0xFFE0);
       }).
       then(service => {
         log('Service found, getting characteristic...');
-        scrollTerminal();
+
         return service.getCharacteristic(0xFFE1);
       }).
       then(characteristic => {
         log('Characteristic found');
-        scrollTerminal();
         characteristicCache = characteristic;
 
         return characteristicCache;
@@ -160,12 +100,10 @@ function connectDeviceAndCacheCharacteristic(device) {
 // Включение получения уведомлений об изменении характеристики
 function startNotifications(characteristic) {
   log('Starting notifications...');
-  scrollTerminal();
 
   return characteristic.startNotifications().
       then(() => {
         log('Notifications started');
-        scrollTerminal();
         characteristic.addEventListener('characteristicvaluechanged',
             handleCharacteristicValueChanged);
       });
@@ -193,35 +131,28 @@ function handleCharacteristicValueChanged(event) {
 // Обработка полученных данных
 function receive(data) {
   log(data, 'in');
-  scrollTerminal();
-  splitData = data.split("-", 2);
-  cartTemp.innerHTML = splitData[0];
-  cartSpeed.innerHTML = splitData[1];
 }
 
 // Вывод в терминал
 function log(data, type = '') {
   terminalContainer.insertAdjacentHTML('beforeend',
-      '<div' + (type ? ' class="' + type + '"' : '') + '>' + '<p class="d">' + data + '</p>' + '</div>');
+      '<div' + (type ? ' class="' + type + '"' : '') + '>' + data + '</div>');
 }
 
 // Отключиться от подключенного устройства
 function disconnect() {
   if (deviceCache) {
     log('Disconnecting from "' + deviceCache.name + '" bluetooth device...');
-    scrollTerminal();
     deviceCache.removeEventListener('gattserverdisconnected',
         handleDisconnection);
 
     if (deviceCache.gatt.connected) {
       deviceCache.gatt.disconnect();
       log('"' + deviceCache.name + '" bluetooth device disconnected');
-      scrollTerminal();
     }
     else {
       log('"' + deviceCache.name +
           '" bluetooth device is already disconnected');
-      scrollTerminal();
     }
   }
 
@@ -232,9 +163,6 @@ function disconnect() {
   }
 
   deviceCache = null;
-
-  cartTemp.innerHTML = "0";
-  cartSpeed.innerHTML = "0";
 }
 
 // Отправить данные подключенному устройству
@@ -263,7 +191,6 @@ function send(data) {
   }
 
   log(data, 'out');
-  scrollTerminal();
 }
 
 // Записать значение в характеристику

@@ -28,6 +28,7 @@
 	<script src="scripts/spotifyHandler.js"></script>
 	<script src="scripts/storageHandler.js"></script>
 
+
 	<!-- Android & Chrome OS support for PWA -->
 	<meta name="theme-color" content="#4caf50" />
 	<link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
@@ -147,18 +148,33 @@
 			<div class="SettingsControl">
 				<div class="SettingsPannel" id="SettingsSpotify">
 					<h1 class="SettingsTitle">Device Name</h1>
-					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyToken">
+					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyName">
 					<button class="settingsSubmit" id="nameSubmit">Submit</button>
 
 					<h1 class="SettingsTitle">Device Token</h1>
 					<input class="settingsInput" type="text" placeholder="Spotify Token" id="SpotifyToken">
-					<button class="settingsSubmit" id="nameSubmit">Submit</button>
+					<button class="settingsSubmit" id="tokenSubmit">Submit</button>
 				</div>
 				<div class="SettingsPannel" id="SettingsEco">
 					<input class="settingsInput">
 				</div>
-				<div class="SettingsPannel" id="SettingsConnect">
-					<input class="settingsInput">
+				<div style="overflow-y: auto;" class="SettingsPannel" id="SettingsConnect">
+					<h1 class="SettingsTitle">Raw Data</h1>
+					<div class="terminal" id="terminal">
+						<div>Device connection...</div>
+						<div class="out">Outcoming message</div>
+						<div class="in">Incoming message</div>
+					</div>
+
+					<h1 class="SettingsTitle">Input feild</h1>
+					<form id="send-form">
+						<input id="input" class="settingsInput" placeholder="Enter Commands">
+						<button class="settingsSubmit" type="submit">Submit</button>
+					</form>
+
+					<button class="settingsSubmit" id="connect">Connect</button>
+					<button class="settingsSubmit" id="disconnect">Disconnect</button>
+
 				</div>
 			</div>
 
@@ -175,6 +191,8 @@
 		<button class="NavButton"><i class="material-icons"> signal_cellular_4_bar </i></button>
 		<button class="NavButton"><i class="material-icons"> volume_up </i></button>
 	</div>
+
+	<script src="scripts/index.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
   --color-black-background: #000000;
   --color-white-background: #ffffff;
   --color-black-text: rgba(0, 0, 0, 0.4);
-  --color-black-text-alt: rgba(0,0,0,0.6);
+  --color-black-text-alt: rgba(0, 0, 0, 0.6);
 }
 
 body {
@@ -335,4 +335,28 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   letter-spacing: 0.1em;
+}
+
+.terminal {
+  max-height: 25%;
+  width: 83%;
+  font-size: 3vh;
+  line-height: 4vh;
+  padding: 2vh;
+  border-radius: 5vh;
+  margin-bottom: 3vh;
+  overflow: auto;
+
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #DBDBDB;
+  color: #151515;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.terminal div.out {
+  color: red;
+}
+
+.terminal div.in {
+  color: blue;
 }

@@ -1,14 +1,15 @@
 window.onSpotifyWebPlaybackSDKReady = () => {
-    var token ="BQBIaPZkq7SqHG-5bOagjicFXlABuKJXSEWgbpUqQBakhRrg9kHvh3ZrRsdg4i3FcjNHkfy8yeZEV4IGlNar41whTeT1bP-sPjtKQkuhdVMcyVxXLG9rTCc5fvvfsM9zNoa1WyE8OQoh5PwA8DmJCWhPqVmOkk-pLOvbmR7nZPzE7GmdOdo";
+    var token = "BQBIaPZkq7SqHG-5bOagjicFXlABuKJXSEWgbpUqQBakhRrg9kHvh3ZrRsdg4i3FcjNHkfy8yeZEV4IGlNar41whTeT1bP-sPjtKQkuhdVMcyVxXLG9rTCc5fvvfsM9zNoa1WyE8OQoh5PwA8DmJCWhPqVmOkk-pLOvbmR7nZPzE7GmdOdo";
     var name = "TESLA Model 3";
     const player = new Spotify.Player({
         name: localStorage.CartName,
         getOAuthToken: cb => {
-            cb(token);
+            cb(localStorage.CartToken);
         }
     });
 
-    document.getElementById("SpotifyToken").value = localStorage.CartName;
+    document.getElementById("SpotifyName").value = localStorage.CartName;
+    document.getElementById("SpotifyToken").value = localStorage.CartToken;
 
     // Error handling
     player.addListener('initialization_error', ({
@@ -187,13 +188,24 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     (function () {
         function SetName() {
-            localStorage.CartName = document.getElementById("SpotifyToken").value;
+            localStorage.CartName = document.getElementById("SpotifyName").value;
             name = localStorage.CartName;
             console.log(name);
 
             player.setName(name);
         }
         document.getElementById('nameSubmit').addEventListener('click', SetName, true);
+    })();
+
+    (function () {
+        function SetName() {
+            localStorage.CartToken = document.getElementById("SpotifyToken").value;
+            token = localStorage.CartName;
+            console.log(token);
+
+            window.location.reload(true);
+        }
+        document.getElementById('tokenSubmit').addEventListener('click', SetName, true);
     })();
 
     // Ready
