@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Mapping Intergration -->
-	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
-	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+	<script src="https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css" rel='stylesheet' />
 
 	<!-- Spotify Intergration -->
 	<script src="https://sdk.scdn.co/spotify-player.js"></script>
@@ -20,25 +20,37 @@
 	<!-- Material Icons & Fonts -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 
 	<!-- Base JS & CSS -->
-	<link rel="stylesheet" href="styles/index.css">
+	<link href="styles/index.css" rel="stylesheet">
 	<script src="scripts/buttonHandler.js"></script>
 	<script src="scripts/spotifyHandler.js"></script>
 	<script src="scripts/storageHandler.js"></script>
-
 
 	<!-- Android & Chrome OS support for PWA -->
 	<meta name="theme-color" content="#4caf50" />
 	<link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
 
-	<!-- IOS Support for PWA -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="apple-mobile-web-app-title" content="Evolocity">
-	<link rel="apple-touch-icon" href="./images/icons/IOS/icon-152x152.png">
+	<!-- Firebase Intergration -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
 
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyBgi_FB7cxiUnZ2WJraOsx_1LEj8dte14Q",
+			authDomain: "evolocity-dash.firebaseapp.com",
+			databaseURL: "https://evolocity-dash.firebaseio.com",
+			projectId: "evolocity-dash",
+			storageBucket: "evolocity-dash.appspot.com",
+			messagingSenderId: "1039907104728",
+			appId: "1:1039907104728:web:c51322a28dfe65412e74ad",
+			measurementId: "G-MCL3EZQFG9"
+		};
+
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+	</script>
 </head>
 
 <body>
@@ -51,22 +63,54 @@
 	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
+	<!-- Windows -->
 	<div class="WindowManager" id="UI">
-		<!-- Default window for driver speed and gear. -->
-		<div class="SpeedWindow">
-			<div class="SpeedInfomation">
-				<div class="SpeedHeader">
-					<h1 id="speed" class="SpeedText">0</h1>
-				</div>
-				<div class="SpeedGears">
-					<h1 class="SpeedGearText" style="text-align: left;">P R N <span style="color: black;">D</span></h1>
-					<h1 class="SpeedGearText" style="text-align: center;">KPH</h1>
-					<h1 class="SpeedGearText" style="text-align: right;">90%</h1>
-				</div>
-				<div class="Speedometer"> </div>
+		<div class="InfoWindow">
+			<div class="InfoSpeed">
+				<h3 style="margin-left: 2vw; margin-bottom: 0; color: rgba(0, 0, 0, 0.6);"><span
+						style="color: rgba(0, 0, 0, 1); font-weight: 900">D</span>
+					N R P</h3>
+				<h1 style="
+				text-align: center;
+				font-size: 16vh;
+				margin: 0;
+				">24</h1>
+				<h4 style="text-align: center; margin: 0;">Km/H</h4>
+				
 			</div>
+			<!--
+				<div class="InfoSpeedGraph" id="chart">
+				<canvas id="myChart"></canvas>
+			</div>
+			
+				<h1 class="SettingsTitle">Device Name</h1>
+					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyName">
+					<button class="settingsSubmit" id="nameSubmit">Submit</button>
 
-			<div class="SpeedRoad">
+					<h1 class="SettingsTitle">Device Token</h1>
+					<input class="settingsInput" type="text" placeholder="Spotify Token" id="SpotifyToken">
+					<button class="settingsSubmit" id="tokenSubmit">Submit</button>
+			-->
+
+			
+
+			<!-- Window for spotify playback. -->
+			<div class="SpotifyWindow" id="musicWindow">
+				<img class="SpotifyImage" id="AlbumImage"></img>
+				<h2 class="SpotifyTitle" id="SongText"></h2>
+				<h4 class="SpotifyArtist" id="ArtistText"></h4>
+				<div class="SpotifyButton">
+					<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-previous">
+							skip_previous
+						</i></button>
+					<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-play">
+							play_arrow
+						</i></button>
+					<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-next">
+							skip_next
+						</i></button>
+				</div>
+
 			</div>
 		</div>
 
@@ -78,7 +122,8 @@
 					'pk.eyJ1IjoiYXN0ZXJvaWRzbWFwIiwiYSI6ImNrNDljanQ2ZjAzbWwzaXJ5bnVjOGZmZTIifQ.oZ25eWy6TThlM3-y-DhowQ';
 				var map = new mapboxgl.Map({
 					container: 'map',
-					style: 'mapbox://styles/mapbox/light-v10'
+					style: 'mapbox://styles/mapbox/navigation-preview-day-v4',
+					pitch: 45
 				});
 
 				map.addControl(
@@ -105,28 +150,65 @@
 				map.addControl(geolocate, 'top-right');
 
 				map.on('load', function () {
+					// Insert the layer beneath any symbol layer.
+					var layers = map.getStyle().layers;
+
+					var labelLayerId;
+					for (var i = 0; i < layers.length; i++) {
+						if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+							labelLayerId = layers[i].id;
+							break;
+						}
+					}
+
+					map.addLayer({
+							'id': '3d-buildings',
+							'source': 'composite',
+							'source-layer': 'building',
+							'filter': ['==', 'extrude', 'true'],
+							'type': 'fill-extrusion',
+							'minzoom': 15,
+							'paint': {
+								'fill-extrusion-color': '#aaa',
+
+								// use an 'interpolate' expression to add a smooth transition effect to the
+								// buildings as the user zooms in
+								'fill-extrusion-height': [
+									'interpolate',
+									['linear'],
+									['zoom'],
+									15,
+									0,
+									15.05,
+									['get', 'height']
+								],
+								'fill-extrusion-base': [
+									'interpolate',
+									['linear'],
+									['zoom'],
+									15,
+									0,
+									15.05,
+									['get', 'min_height']
+								],
+								'fill-extrusion-opacity': 0.6
+							}
+						},
+						labelLayerId
+					);
 					geolocate.trigger();
 				});
 			</script>
 		</div>
 
-		<!-- Window for spotify playback. -->
-		<div class="SpotifyWindow" id="musicWindow">
-			<img class="SpotifyImage" id="AlbumImage"></img>
-			<h1 class="SpotifyTitle" id="SongText"></h1>
-			<h3 class="SpotifyArtist" id="ArtistText"></h3>
-
-			<button class="MusicNavButton" id="musicButton" onclick="openMusicWindow()"><i class="material-icons"
-					id="alt"> close </i></button>
-			<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-next"> skip_next
-				</i></button>
-			<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-play">
-					play_arrow</i></button>
-			<button class="MusicNavButton" id="musicButton"><i class="material-icons" id="alt-previous"> skip_previous
-				</i></button>
-		</div>
-
 		<div class="SettingsWindow" id="settingWindow">
+			<h1 class="SettingsTitle">Device Name</h1>
+					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyName">
+					<button class="settingsSubmit" id="nameSubmit">Submit</button>
+
+					<h1 class="SettingsTitle">Device Token</h1>
+					<input class="settingsInput" type="text" placeholder="Spotify Token" id="SpotifyToken">
+					<button class="settingsSubmit" id="tokenSubmit">Submit</button>
 			<div class="SettingsTab">
 				<button class="SettingsButton" onclick="openSettingsWindow()">
 					<i class="material-icons settings"> close </i>
@@ -147,13 +229,7 @@
 			</div>
 			<div class="SettingsControl">
 				<div class="SettingsPannel" id="SettingsSpotify">
-					<h1 class="SettingsTitle">Device Name</h1>
-					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyName">
-					<button class="settingsSubmit" id="nameSubmit">Submit</button>
-
-					<h1 class="SettingsTitle">Device Token</h1>
-					<input class="settingsInput" type="text" placeholder="Spotify Token" id="SpotifyToken">
-					<button class="settingsSubmit" id="tokenSubmit">Submit</button>
+					
 				</div>
 				<div class="SettingsPannel" id="SettingsEco">
 					<input class="settingsInput">
@@ -182,18 +258,18 @@
 		</div>
 	</div>
 
-	<!-- Navigation Menu for other windows. -->
+	<!-- Navigation Menu for hidden windows. -->
 	<div class="NavigationMenu">
 		<button class="NavButton" onclick="openSettingsWindow()"><i class="material-icons"> build </i></button>
 		<button class="NavButton" onclick="openMusicWindow()"><i class="material-icons"> library_music </i></button>
 		<button class="NavButton"><i class="material-icons"> offline_bolt </i></button>
 		<button class="NavButton"><i class="material-icons"> donut_large </i></button>
-		<button class="NavButton"><i class="material-icons"> eco </i></button>
-		<button class="NavButton"><i class="material-icons"> signal_cellular_4_bar </i></button>
 		<button class="NavButton"><i class="material-icons"> volume_up </i></button>
 	</div>
 
 	<script src="scripts/index.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+	<script src="scripts/speedChart.js"></script>
 </body>
 
 </html>

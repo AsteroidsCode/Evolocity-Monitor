@@ -1,5 +1,5 @@
 window.onSpotifyWebPlaybackSDKReady = () => {
-    var token = "BQBIaPZkq7SqHG-5bOagjicFXlABuKJXSEWgbpUqQBakhRrg9kHvh3ZrRsdg4i3FcjNHkfy8yeZEV4IGlNar41whTeT1bP-sPjtKQkuhdVMcyVxXLG9rTCc5fvvfsM9zNoa1WyE8OQoh5PwA8DmJCWhPqVmOkk-pLOvbmR7nZPzE7GmdOdo";
+    var token = "BQDEhDUlnzrcA-ZyJNW7oSJhA-QHEy_84uXpymX1-FlmnfTD8_nddfX8Ri8c6SCopbb20h23Z46DhbmylGgoNfB9C-niTLmS2tE4gIsiiy1D4j7mZxREs7QcNXoQf2jv69S_qJ-URanw_-d5nF7JHVItnsxnI3p9nPSO37_4txbcNdqyQ4I";
     var name = "TESLA Model 3";
     const player = new Spotify.Player({
         name: localStorage.CartName,
@@ -149,7 +149,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             document.getElementsByClassName('MusicNavButton')[0].style.color = "#000000";
             document.getElementsByClassName('MusicNavButton')[1].style.color = "#000000";
             document.getElementsByClassName('MusicNavButton')[2].style.color = "#000000";
-            document.getElementsByClassName('MusicNavButton')[3].style.color = "#000000";
             document.getElementById('ArtistText').style.color = "#000000";
             document.getElementById('SongText').style.color = "#000000";
             return 'light';
@@ -157,7 +156,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             document.getElementsByClassName('MusicNavButton')[0].style.color = "#ffffff";
             document.getElementsByClassName('MusicNavButton')[1].style.color = "#ffffff";
             document.getElementsByClassName('MusicNavButton')[2].style.color = "#ffffff";
-            document.getElementsByClassName('MusicNavButton')[3].style.color = "#ffffff";
             document.getElementById('ArtistText').style.color = "#ffffff";
             document.getElementById('SongText').style.color = "#ffffff";
             return 'dark';
