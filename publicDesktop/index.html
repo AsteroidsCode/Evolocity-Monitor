@@ -65,7 +65,7 @@
 
 	<!-- Windows -->
 	<div class="WindowManager" id="UI">
-		<div class="InfoWindow">
+		<div class="InfoWindow" id="musicWindow">
 			<div class="InfoSpeed">
 				<h3 style="margin-left: 2vw; margin-bottom: 0; color: rgba(0, 0, 0, 0.6);"><span
 						style="color: rgba(0, 0, 0, 1); font-weight: 900">D</span>
@@ -76,26 +76,11 @@
 				margin: 0;
 				">24</h1>
 				<h4 style="text-align: center; margin: 0;">Km/H</h4>
-				
-			</div>
-			<!--
-				<div class="InfoSpeedGraph" id="chart">
-				<canvas id="myChart"></canvas>
-			</div>
-			
-				<h1 class="SettingsTitle">Device Name</h1>
-					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyName">
-					<button class="settingsSubmit" id="nameSubmit">Submit</button>
 
-					<h1 class="SettingsTitle">Device Token</h1>
-					<input class="settingsInput" type="text" placeholder="Spotify Token" id="SpotifyToken">
-					<button class="settingsSubmit" id="tokenSubmit">Submit</button>
-			-->
-
-			
+			</div>
 
 			<!-- Window for spotify playback. -->
-			<div class="SpotifyWindow" id="musicWindow">
+			<div class="SpotifyWindow">
 				<img class="SpotifyImage" id="AlbumImage"></img>
 				<h2 class="SpotifyTitle" id="SongText"></h2>
 				<h4 class="SpotifyArtist" id="ArtistText"></h4>
@@ -202,66 +187,53 @@
 		</div>
 
 		<div class="SettingsWindow" id="settingWindow">
-			<h1 class="SettingsTitle">Device Name</h1>
+			<h1 class="SettingsHeader">Settings</h1>
+			<button class="SettingsButton" style="float: right;" onclick="OpenSettings()"><i class="material-icons"
+					id="alt-next">
+					close
+				</i></button>
+
+			<div class="SettingsContent">
+				<h2 class="SettingsTitle">General</h2>
+
+				<div class="SettingsSubcontent">
+					<h3 class="SettingsSubtitle">Device Name</h3>
 					<input class="settingsInput" type="text" placeholder="Spotify Name" id="SpotifyName">
 					<button class="settingsSubmit" id="nameSubmit">Submit</button>
 
-					<h1 class="SettingsTitle">Device Token</h1>
+					<h3 class="SettingsSubtitle">Device Token</h3>
 					<input class="settingsInput" type="text" placeholder="Spotify Token" id="SpotifyToken">
 					<button class="settingsSubmit" id="tokenSubmit">Submit</button>
-			<div class="SettingsTab">
-				<button class="SettingsButton" onclick="openSettingsWindow()">
-					<i class="material-icons settings"> close </i>
-					<h1 class="SettingsH1"></h1>
-				</button>
-				<button class="SettingsButton" onclick="openContentSpotify()">
-					<i class="material-icons settings"> library_music </i>
-					<h1 class="SettingsH1">Spotify</h1>
-				</button>
-				<button class="SettingsButton" onclick="openContentEco()">
-					<i class="material-icons settings"> eco </i>
-					<h1 class="SettingsH1">Eco Mode</h1>
-				</button>
-				<button class="SettingsButton" onclick="openContentConnect()">
-					<i class="material-icons settings"> wifi_tethering </i>
-					<h1 class="SettingsH1">Connections</h1>
-				</button>
-			</div>
-			<div class="SettingsControl">
-				<div class="SettingsPannel" id="SettingsSpotify">
-					
 				</div>
-				<div class="SettingsPannel" id="SettingsEco">
-					<input class="settingsInput">
-					<iframe src="https://www.netflix.com" width="700px" height="700px"></iframe>
-				</div>
-				<div style="overflow-y: auto;" class="SettingsPannel" id="SettingsConnect">
-					<h1 class="SettingsTitle">Raw Data</h1>
+
+				<h2 class="SettingsTitle">Communication</h2>
+
+				<div class="SettingsSubcontent">
+					<h3 class="SettingsSubtitle">Connection</h3>
+					<button class="settingsSubmit" id="connect">Connect</button>
+					<button class="settingsSubmit" id="disconnect">Disconnect</button>
+
+					<h3 class="SettingsSubtitle">Raw Data</h3>
 					<div class="terminal" id="terminal">
 						<div>Device connection...</div>
 						<div class="out">Outcoming message</div>
 						<div class="in">Incoming message</div>
 					</div>
 
-					<h1 class="SettingsTitle">Input feild</h1>
 					<form id="send-form">
 						<input id="input" class="settingsInput" placeholder="Enter Commands">
 						<button class="settingsSubmit" type="submit">Submit</button>
 					</form>
-
-					<button class="settingsSubmit" id="connect">Connect</button>
-					<button class="settingsSubmit" id="disconnect">Disconnect</button>
-
 				</div>
 			</div>
-
 		</div>
 	</div>
+	
 
 	<!-- Navigation Menu for hidden windows. -->
 	<div class="NavigationMenu">
-		<button class="NavButton" onclick="openSettingsWindow()"><i class="material-icons"> build </i></button>
-		<button class="NavButton" onclick="openMusicWindow()"><i class="material-icons"> library_music </i></button>
+		<button class="NavButton" onclick="OpenSettings()"><i class="material-icons"> build </i></button>
+		<button class="NavButton"><i class="material-icons"> library_music </i></button>
 		<button class="NavButton"><i class="material-icons"> offline_bolt </i></button>
 		<button class="NavButton"><i class="material-icons"> donut_large </i></button>
 		<button class="NavButton"><i class="material-icons"> volume_up </i></button>

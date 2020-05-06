@@ -12,7 +12,7 @@ body {
 }
 
 /* Fonts */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, div {
   font-family: 'Lato', sans-serif;
 }
 
@@ -74,14 +74,27 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 40% 0% 20% 40%;
+  grid-template-rows: 60% 0% 0% 40%;
 
   box-shadow: 2px 0px 20px #00000012;
   background-color: var(--color-white-background);
 }
 
+.SettingsWindow {
+  height: 100%; width: 70%;
+  bottom: 0; right: 0;
+  position: absolute;
+  display: none;
+  z-index: 9;
+  grid-template-columns: 5% 80% 10% 5%;
+  grid-template-rows: 10% 90%;
+
+  background-color: var(--color-white-background);
+}
+
 /* Infomation Tab */
 .InfoSpeed {
+  background: var(--color-white-background);
   box-shadow: 0px 6px 19px 0px #00000026;
 }
 
@@ -96,6 +109,70 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-rows: 10% 5% 8% 32% 5% 30% 10%;
 }
 
+/* Settings */
+.SettingsHeader {
+  grid-row: 1; grid-column: 2 / span 2;
+  margin: auto auto auto 0;
+}
+
+.SettingsButton {
+  grid-row: 1; grid-column: 3;
+  height: 100%; width: 100%;
+  display: table-cell;
+  bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+
+  background-color: rgba(75, 192, 192, 0);
+}
+
+.SettingsContent {
+  grid-row: 2; grid-column: 2 / span 2;
+  padding-bottom: 5vh;
+  overflow-y: auto;
+}
+
+.SettingsSubcontent {
+  margin-left: 5%;
+}
+
+.settingsInput {
+  padding: 2%; margin-right: 5%; margin-bottom: 2%;
+  width: 95%;
+  border: 0; border-radius: 1vh;
+
+  background-color: rgba(136, 136, 136, 0.12);
+  box-shadow: 0px 3px 5px #00000029;
+}
+
+.settingsSubmit {
+  border: 0; border-radius: 1vh;
+  margin-right: 2%;
+  padding: 2% 2% 2% 2%;
+
+  background-color: rgba(136, 136, 136, 0.12);
+  box-shadow: 0px 3px 5px #00000029;
+}
+
+/* Terminal */
+.terminal {
+  margin-right: 5%; margin-bottom: 2%;
+  padding: 2%;
+  border-radius: 1vh;
+
+  background-color: rgba(136, 136, 136, 0.12);
+  box-shadow: 0px 3px 5px #00000029;
+}
+
+.out {
+  color: green;
+}
+
+.in {
+  color: red;
+}
+
 /* Spotify Player */
 .SpotifyImage {
   width: 100%; height: auto;
@@ -107,11 +184,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .SpotifyArtist {
   grid-row: 3 / span 1; grid-column: 3 / span 1;
-  height: 30%;
+  height: 100%;
   position: relative;
   margin-top: 0.4vh;
   margin-bottom: 0;
   padding-left: 1vw;
+  overflow: hidden;
 
   font-size: 2.4vh;
   font-weight: 800;
@@ -124,6 +202,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding-left: 1vw;
   bottom: 0;
+  overflow: hidden;
 
   font-size: 4vh;
 }
