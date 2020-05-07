@@ -35,21 +35,10 @@
 	<!-- Firebase Intergration -->
 	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
-
-	<script>
-		var firebaseConfig = {
-			apiKey: "AIzaSyBgi_FB7cxiUnZ2WJraOsx_1LEj8dte14Q",
-			authDomain: "evolocity-dash.firebaseapp.com",
-			databaseURL: "https://evolocity-dash.firebaseio.com",
-			projectId: "evolocity-dash",
-			storageBucket: "evolocity-dash.appspot.com",
-			messagingSenderId: "1039907104728",
-			appId: "1:1039907104728:web:c51322a28dfe65412e74ad",
-			measurementId: "G-MCL3EZQFG9"
-		};
-
-		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
+	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+	<script src="scripts/Firebase.js">
+		
 	</script>
 </head>
 
@@ -194,6 +183,20 @@
 				</i></button>
 
 			<div class="SettingsContent">
+				<h2 class="SettingsTitle">Account</h2>
+
+				<div class="SettingsSubcontent">
+					<div class="SettingsUser">
+						<img class="SettingsImage" id="UserImage"></img>
+						<h2 class="SettingsUsername" id="UserName">User</h2>
+						<h4 class="SettingsUserEmail" id="UserEmail">Email</h4>
+					</div>
+
+					<button class="settingsSubmit" onclick="FirebaseSignIn()">Login</button>
+					<button class="settingsSubmit" onclick="FirebaseSignOut()">Logout</button>
+					<button class="settingsSubmit" style="background-color: red; color: white;" onclick="FirebaseDeleteUser()">Delete</button>
+				</div>
+
 				<h2 class="SettingsTitle">General</h2>
 
 				<div class="SettingsSubcontent">
@@ -225,10 +228,12 @@
 						<button class="settingsSubmit" type="submit">Submit</button>
 					</form>
 				</div>
+
+				
 			</div>
 		</div>
 	</div>
-	
+
 
 	<!-- Navigation Menu for hidden windows. -->
 	<div class="NavigationMenu">
@@ -240,8 +245,6 @@
 	</div>
 
 	<script src="scripts/index.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-	<script src="scripts/speedChart.js"></script>
 </body>
 
 </html>

@@ -187,6 +187,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     (function () {
         function SetName() {
             localStorage.CartName = document.getElementById("SpotifyName").value;
+            FirebaseWritePref(localStorage.CartName, localStorage.CartToken, true);
             name = localStorage.CartName;
             console.log(name);
 
@@ -198,6 +199,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     (function () {
         function SetName() {
             localStorage.CartToken = document.getElementById("SpotifyToken").value;
+            FirebaseWritePref(localStorage.CartName, localStorage.CartToken, true);
             token = localStorage.CartName;
             console.log(token);
 
