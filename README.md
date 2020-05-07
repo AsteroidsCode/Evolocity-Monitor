@@ -5,6 +5,15 @@ This is a esay to use **PWA** and **OPEN SOURCE** electric cart dashboard built 
 To install the app simply go to the *Link Above* and add to your homescreen.
 
 ## Changelog
+### Beta 0.1.2
+* **Accounts**
+* New profile section in settings
+* Device name & Spotify Token sync across devices
+* Login with Google
+* **Driver Profiles**
+* Syncs preferences ie Dark Mode, Cart Name, etc across devices
+* Each driver gets their own driving performance overview
+
 ### Beta 0.1.1
 * Settings Window
 * Ability to update Spotify name and token
@@ -19,8 +28,7 @@ To install the app simply go to the *Link Above* and add to your homescreen.
 * **IOS** and **Android** Companion apps
 * Turn by turn navigation
 * Chart.js for race diagnostics
-* Driver Profiles
-* Syncing Data over internet using Firebase
+* Dark Mode
 
 ```
     Evolocity Monitor - Web Dashboard for racing electric carts.
