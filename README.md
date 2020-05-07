@@ -1,6 +1,10 @@
 # Evolocity Monitor
 This is a esay to use **PWA** and **OPEN SOURCE** electric cart dashboard built for New Zealands Evolocity Comprtion. You can try it [Here](https://asteroidscode.github.io/Evolocity-Monitor/publicDesktop/index.html)
 
+__Please do not spam this application as there is a usage limit__
+
+__Please do not use the keys in this repository for anything nefarious__
+
 ## Installation
 To install the app simply go to the *Link Above* and add to your homescreen.
 
